@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="Group" table="groups">
+    <id name="group_id" type="integer" column="group_id">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="group_name" type="string" column="group_name" length="255" nullable="false"/>
+  </entity>
+</doctrine-mapping>

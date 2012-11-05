@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="Feature" table="features">
+    <id name="feature_id" type="integer" column="feature_id">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="internal_desc" type="string" column="internal_desc" length="255" nullable="false"/>
+    <field name="internal_slug" type="string" column="internal_slug" length="255" nullable="false"/>
+    <field name="long_desc" type="text" column="long_desc" nullable="true"/>
+    <field name="applies_to_pro" type="boolean" column="applies_to_pro" nullable="false"/>
+    <field name="applies_to_youtube" type="boolean" column="applies_to_youtube" nullable="true"/>
+    <field name="applies_to_vimeo" type="boolean" column="applies_to_vimeo" nullable="true"/>
+    <field name="applies_to_bliptv" type="boolean" column="applies_to_bliptv" nullable="true"/>
+    <field name="applies_to_wix_free" type="boolean" column="applies_to_wix_free" nullable="true"/>
+    <field name="applies_to_wix_paid" type="boolean" column="applies_to_wix_paid" nullable="true"/>
+    <field name="applies_to_downloadable_addon" type="boolean" column="applies_to_downloadable_addon" nullable="true"/>
+    <many-to-one field="group_id" target-entity="Group">
+      <join-columns>
+        <join-column name="group_id" referenced-column-name="group_id"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="version_id_deprecated" target-entity="Version">
+      <join-columns>
+        <join-column name="version_id_deprecated" referenced-column-name="version_id"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="version_id_introduced" target-entity="Version">
+      <join-columns>
+        <join-column name="version_id_introduced" referenced-column-name="version_id"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>
