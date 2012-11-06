@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost:3306
--- Generation Time: Nov 04, 2012 at 07:13 PM
+-- Generation Time: Nov 05, 2012 at 08:42 PM
 -- Server version: 5.5.21
 -- PHP Version: 5.3.17
 
@@ -19,6 +19,8 @@ SET time_zone = "+00:00";
 --
 -- Database: `tubepress`
 --
+CREATE DATABASE `tubepress` DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci;
+USE `tubepress`;
 
 -- --------------------------------------------------------
 
@@ -27,13 +29,13 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE IF NOT EXISTS `features` (
-  `feature_id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `feature_id` int(11) NOT NULL AUTO_INCREMENT,
   `internal_desc` varchar(255) NOT NULL,
   `internal_slug` varchar(255) NOT NULL,
   `long_desc` longtext,
-  `version_id_introduced` int(10) unsigned DEFAULT NULL,
-  `version_id_deprecated` int(10) unsigned DEFAULT NULL,
-  `group_id` int(10) unsigned DEFAULT NULL,
+  `version_id_introduced` int(11) DEFAULT NULL,
+  `version_id_deprecated` int(11) DEFAULT NULL,
+  `group_id` int(11) DEFAULT NULL,
   `applies_to_pro` tinyint(4) NOT NULL,
   `applies_to_youtube` tinyint(4) DEFAULT NULL,
   `applies_to_vimeo` tinyint(4) DEFAULT NULL,
@@ -55,7 +57,7 @@ CREATE TABLE IF NOT EXISTS `features` (
 --
 
 CREATE TABLE IF NOT EXISTS `groups` (
-  `group_id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `group_id` int(11) NOT NULL AUTO_INCREMENT,
   `group_name` varchar(255) NOT NULL,
   PRIMARY KEY (`group_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
@@ -67,10 +69,10 @@ CREATE TABLE IF NOT EXISTS `groups` (
 --
 
 CREATE TABLE IF NOT EXISTS `versions` (
-  `version_id` int(10) unsigned NOT NULL,
+  `version_id` int(11) NOT NULL AUTO_INCREMENT,
   `version` varchar(11) NOT NULL,
   PRIMARY KEY (`version_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 --
 -- Constraints for dumped tables
