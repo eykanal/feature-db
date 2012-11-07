@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost:3306
--- Generation Time: Nov 05, 2012 at 08:42 PM
+-- Generation Time: Nov 06, 2012 at 08:17 PM
 -- Server version: 5.5.21
 -- PHP Version: 5.3.17
 
@@ -19,8 +19,6 @@ SET time_zone = "+00:00";
 --
 -- Database: `tubepress`
 --
-CREATE DATABASE `tubepress` DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci;
-USE `tubepress`;
 
 -- --------------------------------------------------------
 
@@ -43,12 +41,27 @@ CREATE TABLE IF NOT EXISTS `features` (
   `applies_to_wix_free` tinyint(4) DEFAULT NULL,
   `applies_to_wix_paid` tinyint(4) DEFAULT NULL,
   `applies_to_downloadable_addon` tinyint(4) DEFAULT NULL,
+  `paid` tinyint(4) DEFAULT NULL,
   PRIMARY KEY (`feature_id`),
   UNIQUE KEY `internal_slug` (`internal_slug`),
   KEY `version_id_introduced` (`version_id_introduced`),
   KEY `version_id_deprecated` (`version_id_deprecated`),
   KEY `group_id` (`group_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=34 ;
+
+--
+-- Dumping data for table `features`
+--
+
+INSERT INTO `features` (`feature_id`, `internal_desc`, `internal_slug`, `long_desc`, `version_id_introduced`, `version_id_deprecated`, `group_id`, `applies_to_pro`, `applies_to_youtube`, `applies_to_vimeo`, `applies_to_bliptv`, `applies_to_wix_free`, `applies_to_wix_paid`, `applies_to_downloadable_addon`, `paid`) VALUES
+(26, 'Gallery source: YouTube favorites', 'gallery-source-youtube-favorites', '', 1, NULL, NULL, 0, 0, 0, 0, 0, 0, 0, 0),
+(27, 'Gallery source: YouTube playlist', 'gallery-source-youtube-playlist', '', 1, NULL, NULL, 0, 0, 0, 0, 0, 0, 0, 0),
+(28, 'Gallery source: YouTube search', 'gallery-source-youtube-search', '', 1, NULL, NULL, 0, 0, 0, 0, 0, 0, 0, 0),
+(29, 'Combine multiple video sources', 'multiple-video-sources', '', 1, NULL, NULL, 0, 0, 0, 0, 0, 0, 0, 0),
+(30, 'Player location: TinyBox', 'player-location-tinybox', '', 1, NULL, NULL, 0, 0, 0, 0, 0, 0, 0, 0),
+(31, 'Environment: WordPress templates', 'environment-wordpress-templates', '', 1, NULL, NULL, 0, 0, 0, 0, 0, 0, 0, 0),
+(32, 'Ajax pagination', 'thumbnails-ajax-pagination', '', 1, NULL, NULL, 0, 0, 0, 0, 0, 0, 0, 0),
+(33, 'Player location: FancyBox', 'player-location-fancybox', '', 1, NULL, NULL, 0, 0, 0, 0, 0, 0, 0, 0);
 
 -- --------------------------------------------------------
 
@@ -60,7 +73,16 @@ CREATE TABLE IF NOT EXISTS `groups` (
   `group_id` int(11) NOT NULL AUTO_INCREMENT,
   `group_name` varchar(255) NOT NULL,
   PRIMARY KEY (`group_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=7 ;
+
+--
+-- Dumping data for table `groups`
+--
+
+INSERT INTO `groups` (`group_id`, `group_name`) VALUES
+(1, 'gallery'),
+(2, 'player'),
+(3, 'thumbnails');
 
 -- --------------------------------------------------------
 
@@ -72,7 +94,19 @@ CREATE TABLE IF NOT EXISTS `versions` (
   `version_id` int(11) NOT NULL AUTO_INCREMENT,
   `version` varchar(11) NOT NULL,
   PRIMARY KEY (`version_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=7 ;
+
+--
+-- Dumping data for table `versions`
+--
+
+INSERT INTO `versions` (`version_id`, `version`) VALUES
+(1, '1.0.0'),
+(2, '1.0.1'),
+(3, '1.0.2'),
+(4, '1.1.0'),
+(5, '1.1.3'),
+(6, '2.0.1');
 
 --
 -- Constraints for dumped tables

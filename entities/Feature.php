@@ -33,6 +33,8 @@ class Feature
 	private $applies_to_wix_paid;
 	/** @Column(type="integer") */
 	private $applies_to_downloadable_addon;
+	/** @Column(type="integer") */
+	private $paid;
 
 	public function getId()
 	{
@@ -89,5 +91,14 @@ class Feature
 		return $this->applies_to_wix_paid;
 	}
 
+	public function getDownloadableAddon()
+	{
+		return $this->applies_to_downloadable_addon;
+	}
+
+	public function getPaid()
+	{
+		return $this->paid;
+	}
 	/* No setters as of yet; meant for read-only implementation */
 }
