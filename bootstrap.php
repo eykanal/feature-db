@@ -14,7 +14,7 @@ $dbParams = array(
   'user'     => 'root',
   'password' => '',
   'dbname'   => 'tubepress',
-  'unix_socket' => '/Applications/mampstack-5.3.18-0/mysql/tmp/mysql.sock',
+/* 'unix_socket' => '/Applications/mampstack-5.3.18-0/mysql/tmp/mysql.sock', */
 );
 
 $config = Setup::createXMLMetadataConfiguration($paths, $isDevMode);
