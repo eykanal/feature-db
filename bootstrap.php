@@ -1,5 +1,7 @@
 <?php
 
+$config = parse_ini_file("config/config.ini");
+
 // Load files for Doctrine to run
 require_once "vendor/autoload.php";
 
@@ -10,11 +12,11 @@ use Doctrine\ORM\EntityManager;
 $paths = array("entities");
 $isDevMode = false;
 $dbParams = array(
-  'driver'   => 'pdo_mysql',
-  'user'     => 'root',
-  'password' => '',
-  'dbname'   => 'tubepress',
-/* 'unix_socket' => '/Applications/mampstack-5.3.18-0/mysql/tmp/mysql.sock', */
+  'driver'   => $config['driver'],
+  'user'     => $config['user'],
+  'password' => $config['password'],
+  'dbname'   => $config['dbname'],
+/* 'unix_socket' => $config['unix_socket'], */
 );
 
 $config = Setup::createXMLMetadataConfiguration($paths, $isDevMode);
